@@ -14,8 +14,6 @@ def leave_last_lines_from_file(filename,lines_count):
 		return ''.join(lines[-lines_count:])
 
 
-
-
 app = Flask(__name__)
 
 
@@ -121,4 +119,4 @@ def get_gpt3_response(final_prompt):
 
 
 if __name__ == '__main__':
-	app.run()
+	app.run(port=80)

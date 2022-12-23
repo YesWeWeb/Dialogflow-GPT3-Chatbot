@@ -14,8 +14,6 @@ def leave_last_lines_from_file(filename,lines_count):
 		return ''.join(lines[-lines_count:])
 
 
-
-
 app = Flask(__name__)
 
 
