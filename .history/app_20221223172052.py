@@ -71,9 +71,6 @@ def main():
 		gpt_response_text = get_gpt3_response(final_prompt)
 		gpt_response_text = gpt_response_text.strip()
 
-	if gpt_response_text in file.read():
-		gpt_response_text = "I need to learn more about the topic, please try, to be more concrete or asking me differently"
-
 	file.write(f"{gpt_response_text}\n\n\n")
 	file.close()
 
