@@ -64,19 +64,16 @@ def main():
 
 
 
-	file = open(context_file, "r", encoding='utf-8')
+	file = open(context_file, "a+", encoding='utf-8')
 
 	if gpt_response_text in file.read():
 		print("same answer was detected")
 		gpt_response_text = get_gpt3_response(final_prompt)
 		gpt_response_text = gpt_response_text.strip()
 
-	if gpt_response_text in file.read() and gpt_response_text.lower() != "yes" and gpt_response_text.lower() != 'no':
-		gpt_response_text = "Could you please tell me more about it?"
+	if gpt_response_text in file.read():
+		gpt_response_text = "I need to learn more about your question, please try, to be more concrete or asking me differently"
 
-
-
-	file = open(context_file, "a", encoding='utf-8')
 	file.write(f"{gpt_response_text}\n\n\n")
 	file.close()
 
