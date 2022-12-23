@@ -71,9 +71,9 @@ def main():
 		gpt_response_text = get_gpt3_response(final_prompt)
 		gpt_response_text = gpt_response_text.strip()
 
-		if gpt_response_text in file.read():
-			print("same answer was detected again")
-			gpt_response_text = "Could you please tell me more about it?"
+	if gpt_response_text in file.read():
+		print("same answer was detected again")
+		gpt_response_text = "Could you please tell me more about it?"
 
 
 
