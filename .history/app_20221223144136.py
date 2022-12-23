@@ -58,7 +58,7 @@ def main():
 
 
 	gpt_response_text = get_gpt3_response(final_prompt)
-	gpt_response_text = gpt_response_text.strip()
+	get_gpt3_response_text = gpt_response_text.strip()
 
 
 
