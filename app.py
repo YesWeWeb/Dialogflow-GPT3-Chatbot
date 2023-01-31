@@ -4,8 +4,7 @@ from flask import Flask, request
 import openai
 import time
 
-OPENAI_KEY = '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'
-openai.api_key = OPENAI_KEY
+openai.api_key = os.getenv("OPENAI_KEY")
 
 
 def leave_last_lines_from_file(filename,lines_count):
