@@ -5,10 +5,12 @@ A conversational chatbot that leverages the power of OpenAI's GPT-3 language mod
 To deploy the chatbot, you will need to install the required dependencies using pip.
 
 `pip install -r requirements.txt`
+
 Then, you will need to set your OpenAI API key as an environment variable.
 
 
 `export OPENAI_KEY={YOUR OPENAI KEY}`
+
 Once you have installed the dependencies and set your OpenAI API key, you can run the chatbot using the provided code.
 
 ## Features
