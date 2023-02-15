@@ -10,7 +10,7 @@ itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 numpy==1.21.6
-openai==0.22.0
+openai==0.21.0
 openpyxl==3.0.10
 pandas==1.2.0
 pandas-stubs==1.2.0.62
