@@ -16,7 +16,7 @@ def leave_last_lines_from_file(filename,lines_count):
 
 
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = '898knjnbs0ppd93'
 
 
 @app.route('/GPT3-1', methods=['POST'])
@@ -60,18 +60,12 @@ def main():
 	gpt_response_text = gpt_response_text.strip()
 
 
-
-
-
 	file = open(context_file, "r", encoding='utf-8')
 
 	if gpt_response_text in file.read():
 		print("same answer was detected")
 		gpt_response_text = get_gpt3_response(final_prompt)
 		gpt_response_text = gpt_response_text.strip()
-
-
-
 
 
 	file = open(context_file, "a", encoding='utf-8')
@@ -97,25 +91,22 @@ def main():
 
 
 def delete_outdated_interactions():
-	three_minutes_ago = time.time() - 180
+	ten_minutes_ago = time.time() - 600
 	folder = './talk_sessions/'
 
 	for file in os.listdir(folder):
 		print(file)
 		t = os.stat(folder+file).st_mtime
-		if t < three_minutes_ago:
+		if t < ten_minutes_ago:
 			os.remove(folder+file)
-
-
-
 
 
 def get_gpt3_response(final_prompt):
 	response = openai.Completion.create(
-		engine="text-davinci-001",
+		engine="text-davinci-003",
 		prompt=f"{final_prompt}\n",
 		temperature=0.5,
-		max_tokens=100,
+		max_tokens=1024,
 		top_p=1,
 		frequency_penalty=0,
 		presence_penalty=0)
