@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 
 
-@app.route('/', methods=['POST'])
+@app.route('/GPT3-1', methods=['POST'])
 def main():
 
 	delete_outdated_interactions()
