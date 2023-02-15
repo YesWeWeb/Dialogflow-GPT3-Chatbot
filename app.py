@@ -125,7 +125,5 @@ def get_gpt3_response(final_prompt):
 
 
 
-
-
 if __name__ == '__main__':
 	app.run(port=5000)
