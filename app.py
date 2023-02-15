@@ -16,8 +16,6 @@ def leave_last_lines_from_file(filename,lines_count):
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '898knjnbs0ppd93'
-
 
 @app.route('/GPT3-1', methods=['POST'])
 def main():
