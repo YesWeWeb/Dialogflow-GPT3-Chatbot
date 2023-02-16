@@ -18,7 +18,7 @@ def leave_last_lines_from_file(filename,lines_count):
 app = Flask(__name__)
 
 @app.route('/dialogflowES', methods=['POST'])
-def main():
+def ESmain():
 
 	delete_outdated_interactions()
 	
@@ -82,7 +82,7 @@ def main():
 
 
 @app.route('/dialogflowCX', methods=['POST'])
-def main():
+def CXmain():
 
 	delete_outdated_interactions()
 	
