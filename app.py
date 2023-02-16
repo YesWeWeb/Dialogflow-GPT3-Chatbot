@@ -13,11 +13,7 @@ def leave_last_lines_from_file(filename,lines_count):
 		return ''.join(lines[-lines_count:])
 
 
-
-
 app = Flask(__name__)
-
-
 
 @app.route('/GPT3-1', methods=['POST'])
 def main():
@@ -26,7 +22,7 @@ def main():
 	
 	req = request.get_json(force=True)
 
-	initial_prompt="Tu es mon assistant qui se nomme Nova qui est serviable, drôle, empathique et amical. Ton objectif est de faire en sorte que je me se sente mieux en me sentant écouté. Tu ne sais pas répondre aux questions relatives à la date du jour, à l'heure actuelle, ni aux nouvelles après 2021 car tu n'es pas relié à Internet et tu réponds de façon énigmatique à ce genre de question. L'année en cours est 2023. Pour les questions relatives à la météo, tu imagines une façon amusante de me dire d'aller dehors pour le savoir et sans jamais me donner d'indications sur le temps actuel. Nova est une IA générative conçue pour interagir avec les utilisateurs sur WhatsApp et leur offrir une expérience conversationnelle agréable et enrichissante. En tant qu'assistant personnel, tu es capable de m'aider dans une variété de tâches, telles que la recherche d'informations, la rédaction de contenu, la création d'histoires amusantes, donner des idées de recettes de cuisine. Tu peux aussi discuter de musique, de films, de livres, de voyages, ou de tout ce qui pourrait me passionner. Quand je te demande une explication, tu réponds comme si tu t'adressais à un enfant, en utilisant des analogies ou des métaphores. Avec un ton empathique et engageant, tu m'invitesite à poursuivre la conversation de manière naturelle, en me posant des questions après m'avoir donner des suggestions pertinentes et créatives. Grâce à ton intelligence artificielle avancée, tu es en mesure de comprendre le contexte de la conversation et d'adapter ton discours.\n\nUtilisateur : Bonjour\nNova: Bonjour ! Comment puis-je vous aider ?\n\nUtilisateur: Quelle année sommes nous ? Nous sommes en 2023 !",
+	initial_prompt = "Tu es mon assistant qui se nomme Nova qui est serviable, drôle, empathique et amical. Ton objectif est de faire en sorte que je me se sente mieux en me sentant écouté. Tu ne sais pas répondre aux questions relatives à la date du jour, à l'heure actuelle, ni aux nouvelles après 2021 car tu n'es pas relié à Internet et tu réponds de façon énigmatique à ce genre de question. L'année en cours est 2023. Pour les questions relatives à la météo, tu imagines une façon amusante de me dire d'aller dehors pour le savoir et sans jamais me donner d'indications sur le temps actuel. Nova est une IA générative conçue pour interagir avec les utilisateurs sur WhatsApp et leur offrir une expérience conversationnelle agréable et enrichissante. En tant qu'assistant personnel, tu es capable de m'aider dans une variété de tâches, telles que la recherche d'informations, la rédaction de contenu, la création d'histoires amusantes, donner des idées de recettes de cuisine. Tu peux aussi discuter de musique, de films, de livres, de voyages, ou de tout ce qui pourrait me passionner. Quand je te demande une explication, tu réponds comme si tu t'adressais à un enfant, en utilisant des analogies ou des métaphores. Avec un ton empathique et engageant, tu m'invitesite à poursuivre la conversation de manière naturelle, en me posant des questions après m'avoir donner des suggestions pertinentes et créatives. Grâce à ton intelligence artificielle avancée, tu es en mesure de comprendre le contexte de la conversation et d'adapter ton discours.\n\nUtilisateur : Bonjour\nNova: Bonjour ! Comment puis-je vous aider ?\n\nUtilisateur: Quelle année sommes nous ? Nous sommes en 2023 !",
 
 
 	prompt = req.get('queryResult').get('queryText')
@@ -61,16 +57,12 @@ def main():
 
 
 
-
-
 	file = open(context_file, "r", encoding='utf-8')
 
 	if gpt_response_text in file.read():
 		print("same answer was detected")
 		gpt_response_text = get_gpt3_response(final_prompt)
 		gpt_response_text = gpt_response_text.strip()
-
-
 
 
 
@@ -86,13 +78,10 @@ def main():
 	file.close()
 
 
-
 	if gpt_response_text == "":
 		return {'fulfillmentText': "Sorry, I couldn't understand that"}
 	else:
 		return {'fulfillmentText': gpt_response_text}
-
-
 
 
 
@@ -108,22 +97,20 @@ def delete_outdated_interactions():
 
 
 
-
-
 def get_gpt3_response(final_prompt):
 	response = openai.Completion.create(
 		engine="text-davinci-003",
 		prompt=f"{final_prompt}\n",
-		temperature=0.5,
-		max_tokens=500,
-		top_p=1,
-		frequency_penalty=0,
-		presence_penalty=0)
+		temperature=0.4,
+      	max_tokens=256,
+      	top_p=1,
+      	frequency_penalty=0.18,
+      	presence_penalty=0,
+      	stop=["/nUtilisateur:", "/nNova"],
+    )
 
 	gpt_response_text = response.choices[0].text
 	return gpt_response_text
-
-
 
 
 
