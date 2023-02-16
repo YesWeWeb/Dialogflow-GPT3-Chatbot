@@ -17,6 +17,8 @@ def leave_last_lines_from_file(filename,lines_count):
 
 app = Flask(__name__)
 
+
+
 @app.route('/GPT3-1', methods=['POST'])
 def main():
 
@@ -58,12 +60,18 @@ def main():
 	gpt_response_text = gpt_response_text.strip()
 
 
+
+
+
 	file = open(context_file, "r", encoding='utf-8')
 
 	if gpt_response_text in file.read():
 		print("same answer was detected")
 		gpt_response_text = get_gpt3_response(final_prompt)
 		gpt_response_text = gpt_response_text.strip()
+
+
+
 
 
 	file = open(context_file, "a", encoding='utf-8')
@@ -89,14 +97,17 @@ def main():
 
 
 def delete_outdated_interactions():
-	ten_minutes_ago = time.time() - 600
+	three_minutes_ago = time.time() - 180
 	folder = './talk_sessions/'
 
 	for file in os.listdir(folder):
 		print(file)
 		t = os.stat(folder+file).st_mtime
-		if t < ten_minutes_ago:
+		if t < three_minutes_ago:
 			os.remove(folder+file)
+
+
+
 
 
 def get_gpt3_response(final_prompt):
@@ -111,6 +122,8 @@ def get_gpt3_response(final_prompt):
 
 	gpt_response_text = response.choices[0].text
 	return gpt_response_text
+
+
 
 
 
