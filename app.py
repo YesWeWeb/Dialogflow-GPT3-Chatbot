@@ -112,7 +112,6 @@ def CXmain():
 	file = open(context_file, "r", encoding='utf-8')
 	final_prompt =  file.read()
 	file.close()
-	print(final_prompt)
 
 	gpt_response_text = get_gpt3_response(final_prompt)
 	gpt_response_text = gpt_response_text.strip()
@@ -143,7 +142,7 @@ def CXmain():
 	if gpt_response_text == "":
 		return {"fulfillment_response":{"messages":[{"text":{"text": "Sorry, I couldn't understand that","redactedText": "Sorry, I couldn't understand that"},"responseType":"HANDLER_PROMPT","source":"VIRTUAL_AGENT"}]}}
 	else:
-		return {"fulfillment_response":{"messages":[{"text":{"text": gpt_response_text,"redactedText": gpt_response_text},"responseType":"HANDLER_PROMPT","source":"VIRTUAL_AGENT"}]}}
+		return {"fulfillment_response":{"messages":[{"text":{"text":[gpt_response_text]}}]}}
 
 
 	
