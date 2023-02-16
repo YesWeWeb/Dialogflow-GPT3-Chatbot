@@ -142,9 +142,12 @@ def CXmain():
 
 
 	if gpt_response_text == "":
-		return {'fulfillmentText': "Sorry, I couldn't understand that"}
+		return {"fulfillment_response":{"messages":[{"text":{"text": "Sorry, I couldn't understand that","redactedText": "Sorry, I couldn't understand that"},"responseType":"HANDLER_PROMPT","source":"VIRTUAL_AGENT"}]}}
 	else:
-		return {'fulfillmentText': gpt_response_text}
+		return {"fulfillment_response":{"messages":[{"text":{"text": gpt_response_text,"redactedText": gpt_response_text},"responseType":"HANDLER_PROMPT","source":"VIRTUAL_AGENT"}]}}
+
+
+	
 
 
 
