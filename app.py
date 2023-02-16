@@ -29,7 +29,7 @@ def main():
 
 
 	prompt = req.get('queryResult').get('queryText')
-
+	print(prompt)
 
 	dialogflow_session_id = req.get('session')
 
@@ -54,7 +54,7 @@ def main():
 	file = open(context_file, "r", encoding='utf-8')
 	final_prompt =  file.read()
 	file.close()
-
+	print(final_prompt)
 
 	gpt_response_text = get_gpt3_response(final_prompt)
 	gpt_response_text = gpt_response_text.strip()

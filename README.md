@@ -22,6 +22,3 @@ Once you have installed the dependencies and set your OpenAI API key, you can ru
 
 ## Conclusion
 This chatbot is a powerful tool for anyone looking to create a conversational interface using GPT-3 and Dialogflow. With its ability to understand context and store previous interactions, this chatbot is well-equipped to provide intelligent and coherent responses to users.
-
-
-ok
