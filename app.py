@@ -89,9 +89,8 @@ def CXmain():
 	req = request.get_json(force=True)
 
 	prompt = req.get('text')
-	print(prompt)
 
-	dialogflow_session_id = req.get('session')
+	dialogflow_session_id = req.get('sessionInfo').get('session')
 
 
 	encoded = dialogflow_session_id.encode()
