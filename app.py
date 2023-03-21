@@ -1,5 +1,10 @@
 from flask import Flask, request, jsonify
 from helper.openai_api import text_complition
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 app = Flask(__name__)
@@ -21,7 +26,9 @@ def cxReceiveMessage():
         result = text_complition(query_text)
 
         if result['status'] == 1:
-            return jsonify(
+            logger.info(f{finish_reason}: {tokens_total})
+
+			return jsonify(
                 {
                     'fulfillment_response': {
                         'messages': [
