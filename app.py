@@ -17,6 +17,10 @@ def leave_last_lines_from_file(filename,lines_count):
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return 'All is well...'
+
 @app.route('/dialogflowES', methods=['POST'])
 def ESmain():
 
