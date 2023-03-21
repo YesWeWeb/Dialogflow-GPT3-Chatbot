@@ -16,7 +16,7 @@ def text_complition(prompt: str) -> dict:
         - dict
     '''
     try:
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             prompt=f'Human: {prompt}\nAI: ',
             temperature=0.9,
