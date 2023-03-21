@@ -16,16 +16,17 @@ def text_complition(prompt: str) -> dict:
         - dict
     '''
     try:
+
         response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            prompt=f'Human: {prompt}\nAI: ',
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": "Hello!"}
+            ],
             temperature=0.9,
             max_tokens=150,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0.6,
-            stop=['Human:', 'AI:']
         )
+
+
         return {
             'status': 1,
             'response': response['choices'][0]['text']
