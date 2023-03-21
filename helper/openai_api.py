@@ -17,7 +17,7 @@ def text_complition(prompt: str) -> dict:
     '''
     try:
         response = openai.Completion.create(
-            model='text-davinci-003',
+            model='gpt-3.5-turbo',
             prompt=f'Human: {prompt}\nAI: ',
             temperature=0.9,
             max_tokens=150,
