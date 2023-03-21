@@ -29,7 +29,7 @@ def text_complition(prompt: str) -> dict:
 
         return {
             'status': 1,
-            'response': response['choices'][0]['text']
+            'response': response['choices'][0]['message']['content']
         }
     except:
         return {
